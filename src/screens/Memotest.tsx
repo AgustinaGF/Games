@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
 	ImageList,
 	ImageListItem,
@@ -6,7 +7,6 @@ import {
 	Alert,
 	IconButton,
 } from "@mui/material";
-import { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 
 const IMAGES = [
