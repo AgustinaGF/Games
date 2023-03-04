@@ -40,7 +40,6 @@ export default function Memotest() {
 
 	useEffect(() => {
 		if (guessed.length === IMAGES.length) {
-			// alert("You Win!");
 			setOpen(true);
 			location.reload();
 		}
