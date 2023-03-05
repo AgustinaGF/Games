@@ -65,7 +65,7 @@ export default function Memotest() {
 							}
 							sx={{ mb: 2 }}
 						>
-							You Win!!!
+							You Won!!!
 						</Alert>
 					</Collapse>
 				</Box>
@@ -93,9 +93,8 @@ export default function Memotest() {
 								<img
 									key={url}
 									alt="icon"
-									src={
-										"https://icongr.am/clarity/search.svg?size=128&color=currentColor"
-									}
+									// prettier-ignore
+									src={"https://icongr.am/clarity/search.svg?size=128&color=currentColor"}
 								/>
 							)}
 						</ImageListItem>
