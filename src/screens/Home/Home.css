@@ -1,0 +1,39 @@
+.title {
+	font-family: "Press Start 2P";
+	font-size: 28px;
+	line-height: 1.33;
+	color: transparent;
+	background: #ffffff;
+	background: -webkit-linear-gradient(to bottom, #ffffff 15%, #33e9ff 100%);
+	background: -moz-linear-gradient(to bottom, #ffffff 15%, #33e9ff 100%);
+	background: linear-gradient(to bottom, #ffffff 15%, #33e9ff 100%);
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.containerBackground {
+	background-image: url("https://mcdn.wallpapersafari.com/medium/63/54/lNEQO8.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 100%;
+	max-width: 1000px;
+	height: 500px;
+	border-color: white;
+	border-width: 10px;
+	border-style: ridge;
+	margin-top: 2em;
+	font-size: 18px;
+	color: #ffffff;
+	display: flex;
+	justify-content: center;
+}
+.subtitle {
+	font-size: 18px;
+	font-family: "Press Start 2P";
+	margin-bottom: 2em;
+}
+
+.link {
+	text-decoration: none;
+}
