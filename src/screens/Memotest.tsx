@@ -83,8 +83,10 @@ export default function Memotest() {
 							style={{
 								cursor: "pointer",
 								padding: 12,
-								border: "1px solid #555",
+								border: "1px solid #33E9FF",
 								borderRadius: 12,
+								background: "#001b38",
+								color: "#33E9FF",
 							}}
 						>
 							{selected.includes(image) || guessed.includes(image) ? (

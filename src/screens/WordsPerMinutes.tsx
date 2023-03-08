@@ -42,14 +42,37 @@ export default function WordsPerMinutes() {
 		<Grid
 			container
 			spacing={1}
+			display="flex"
 			justifyContent="center"
-			alignItems="center"
-			direction="column"
+			flexDirection="column"
+			alignContent="center"
+			sx={{
+				height: "500px",
+				padding: "1em",
+			}}
 		>
-			<Grid item xs={12} sm={6} md={6}>
-				{Boolean(time) && <Typography variant="h3">{word}</Typography>}
-				<Typography variant="h4">Characters typed:{characterCount}</Typography>
-				<Typography variant="h5">Remaining typed:{time}</Typography>
+			<Grid
+				item
+				display="flex"
+				flexDirection="column"
+				alignItems="center"
+				justifyContent="space-evenly"
+			>
+				{Boolean(time) && (
+					<Typography
+						variant="h3"
+						color={"#33E9FF"}
+						sx={{ marginBottom: "1em" }}
+					>
+						{word}
+					</Typography>
+				)}
+				<Typography variant="h4" fontSize={24} sx={{ marginBottom: "1em" }}>
+					Characters typed:{characterCount}
+				</Typography>
+				<Typography variant="h4" fontSize={24} sx={{ marginBottom: "1em" }}>
+					Remaining typed:{time}
+				</Typography>
 			</Grid>
 
 			{time ? (
@@ -69,20 +92,35 @@ export default function WordsPerMinutes() {
 						<Button
 							variant="contained"
 							type="submit"
-							style={{ height: "55px" }}
+							sx={{
+								height: "55px",
+								borderColor: "#33E9FF",
+								borderWidth: "2px",
+								borderStyle: "solid",
+								background: "#001b38",
+								color: "#33E9FF",
+							}}
 						>
 							Submit
 						</Button>
 					</form>
 				</Grid>
 			) : (
-				<Grid container spacing={1} justifyContent="center" alignItems="center">
-					<Grid item xs={12} sm={6} md={6}>
-						<Button onClick={() => setTime(60)} variant="contained" fullWidth>
-							Play
-						</Button>
-					</Grid>
-				</Grid>
+				<Button
+					onClick={() => setTime(60)}
+					variant="contained"
+					sx={{
+						height: "50px",
+						minWidth: "300px",
+						borderColor: "#33E9FF",
+						borderWidth: "2px",
+						borderStyle: "solid",
+						background: "#001b38",
+						color: "#33E9FF",
+					}}
+				>
+					Play
+				</Button>
 			)}
 		</Grid>
 	);

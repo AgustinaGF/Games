@@ -1,6 +1,4 @@
 .title {
-	font-family: "Press Start 2P";
-	font-size: 28px;
 	line-height: 1.33;
 	color: transparent;
 	background: #ffffff;
@@ -27,11 +25,6 @@
 	color: #ffffff;
 	display: flex;
 	justify-content: center;
-}
-.subtitle {
-	font-size: 18px;
-	font-family: "Press Start 2P";
-	margin-bottom: 2em;
 }
 
 .link {

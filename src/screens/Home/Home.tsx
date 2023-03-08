@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 import "./Home.css";
@@ -19,7 +19,9 @@ export default function Home() {
 				alignItems="center"
 				justifyContent="center"
 			>
-				<h2 className="title">SUPER ARCADE</h2>
+				<Typography className="title" fontSize={28}>
+					SUPER ARCADE
+				</Typography>
 			</Box>
 			<div className="containerBackground">
 				<Box
@@ -28,7 +30,9 @@ export default function Home() {
 					alignItems="center"
 					justifyContent="center"
 				>
-					<h3 className="subtitle">SELECT GAME</h3>
+					<Typography fontSize={18} sx={{ marginBottom: "2em" }}>
+						SELECT GAME
+					</Typography>
 					<Box
 						display="flex"
 						flexDirection="column"
