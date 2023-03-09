@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Memotest from "./screens/Memotest";
 import WordsPerMinutes from "./screens/WordsPerMinutes";
 import Home from "./screens/Home/Home";
-import Pokemon from "./screens/Pokemon";
+import Pokemon from "./screens/Pokemon/Pokemon";
 import "@fontsource/press-start-2p";
 
 function App() {

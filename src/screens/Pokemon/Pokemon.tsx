@@ -7,7 +7,9 @@ import {
 	Collapse,
 	Alert,
 	IconButton,
+	Typography,
 } from "@mui/material";
+import "./Pokemon.css";
 
 const POKEMONS = [
 	"bulbasaur",
@@ -94,29 +96,72 @@ export default function Pokemon() {
 					</Box>
 				) : null}
 			</>
-			<img
-				height={512}
-				width={512}
-				style={{
-					imageRendering: "pixelated",
-					filter: hasWon ? "" : "brightness(0) invert(1)",
-				}}
-				src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-					MATCH + 1
-				}.png`}
-			/>
-			{hasWon ? (
-				<Button onClick={() => location.reload()} variant="contained" fullWidth>
-					Play Again
-				</Button>
-			) : (
-				<form onSubmit={handleSubmit}>
-					<TextField variant="outlined" fullWidth name="pokemon" autoFocus />
-					<Button type="submit" variant="contained">
-						Submit
-					</Button>
-				</form>
-			)}
+			<div className="containerBackgroundPokemon">
+				<Box
+					display="flex"
+					flexDirection="column"
+					alignItems="center"
+					justifyContent="space-evenly"
+				>
+					<Typography sx={{ marginTop: "2em" }} fontSize={20}>
+						{" "}
+						GUESS THE POKEMON
+					</Typography>
+					<img
+						height={512}
+						width={400}
+						className="hiddenPokemon"
+						style={{
+							imageRendering: "pixelated",
+							filter: hasWon ? "" : "brightness(0) invert(0)",
+						}}
+						src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+							MATCH + 1
+						}.png`}
+					/>
+					{hasWon ? (
+						<Button
+							onClick={() => location.reload()}
+							variant="contained"
+							fullWidth
+						>
+							Play Again
+						</Button>
+					) : (
+						<form
+							onSubmit={handleSubmit}
+							style={{
+								display: "flex",
+								flexDirection: "row",
+								width: "100%",
+								padding: "2em",
+							}}
+						>
+							<TextField
+								variant="outlined"
+								fullWidth
+								name="pokemon"
+								autoFocus
+								placeholder="Enter the name"
+							/>
+							<Button
+								type="submit"
+								variant="contained"
+								sx={{
+									height: "55px",
+									borderColor: "#33E9FF",
+									borderWidth: "2px",
+									borderStyle: "solid",
+									background: "#001b38",
+									color: "#33E9FF",
+								}}
+							>
+								Send
+							</Button>
+						</form>
+					)}
+				</Box>
+			</div>
 		</div>
 	);
 }

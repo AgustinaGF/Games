@@ -1,0 +1,27 @@
+.containerBackgroundPokemon {
+	background-image: url("https://wallpapercave.com/wp/wp2595099.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	width: 100%;
+	max-width: 1000px;
+	border-color: white;
+	border-width: 10px;
+	border-style: ridge;
+	margin-top: 2em;
+	font-size: 18px;
+	color: #ffffff;
+	z-index: -2;
+}
+
+.hiddenPokemon {
+	animation: action 2s linear infinite alternate;
+}
+
+@keyframes action {
+	0% {
+		transform: translateY(0);
+	}
+	100% {
+		transform: translateY(-10px);
+	}
+}

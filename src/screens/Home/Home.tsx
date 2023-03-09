@@ -84,7 +84,7 @@ export default function Home() {
 									color: "#33E9FF",
 								}}
 							>
-								Guees Pokemon
+								Guess Pokemon
 							</Button>
 						</Link>
 					</Box>
