@@ -6,6 +6,7 @@ import {
 	Collapse,
 	Alert,
 	IconButton,
+	CircularProgress,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 
@@ -28,6 +29,8 @@ export default function Memotest() {
 	const [guessed, setGuesssed] = useState<string[]>([]);
 	const [selected, setSelected] = useState<string[]>([]);
 	const [open, setOpen] = useState(false);
+	//prettier-ignore
+	const iconSearch ="https://icongr.am/clarity/search.svg?size=128&color=currentColor";
 
 	useEffect(() => {
 		if (selected.length == 2) {
@@ -41,10 +44,13 @@ export default function Memotest() {
 	useEffect(() => {
 		if (guessed.length === IMAGES.length) {
 			setOpen(true);
-			location.reload();
+			// location.reload();
 		}
 	}, [guessed]);
 
+	const handleClose = () => {
+		location.reload();
+	};
 	return (
 		<>
 			{open ? (
@@ -55,10 +61,8 @@ export default function Memotest() {
 								<IconButton
 									aria-label="close"
 									color="inherit"
-									size="small"
-									onClick={() => {
-										setOpen(false);
-									}}
+									//prettier-ignore
+									onClick={handleClose}
 								>
 									<CloseIcon fontSize="inherit" />
 								</IconButton>
@@ -69,40 +73,42 @@ export default function Memotest() {
 						</Alert>
 					</Collapse>
 				</Box>
-			) : null}
-			<ImageList sx={{ width: "100%", maxHeight: "80%" }} cols={5} gap={20}>
-				{IMAGES.map((image) => {
-					const [, url] = image.split("|");
-					return (
-						<ImageListItem
-							onClick={() =>
-								selected.length < 2 &&
-								setSelected((selected) => selected.concat(image))
-							}
-							key={image}
-							style={{
-								cursor: "pointer",
-								padding: 12,
-								border: "1px solid #33E9FF",
-								borderRadius: 12,
-								background: "#001b38",
-								color: "#33E9FF",
-							}}
-						>
-							{selected.includes(image) || guessed.includes(image) ? (
-								<img alt="icon" src={url} />
-							) : (
-								<img
-									key={url}
-									alt="icon"
-									// prettier-ignore
-									src={"https://icongr.am/clarity/search.svg?size=128&color=currentColor"}
-								/>
-							)}
-						</ImageListItem>
-					);
-				})}
-			</ImageList>
+			) : (
+				<ImageList sx={{ width: "100%", maxHeight: "80%" }} cols={5} gap={20}>
+					{IMAGES.map((image) => {
+						const [, url] = image.split("|");
+						return (
+							<ImageListItem
+								onClick={() =>
+									selected.length < 2 &&
+									setSelected((selected) => selected.concat(image))
+								}
+								key={image}
+								style={{
+									cursor: "pointer",
+									padding: 12,
+									border: "1px solid #33E9FF",
+									borderRadius: 12,
+									background: "#001b38",
+									color: "#33E9FF",
+								}}
+								sx={{ minHeight: 100, minWidth: 100 }}
+							>
+								{selected.includes(image) || guessed.includes(image) ? (
+									<img alt="icon" src={url} />
+								) : (
+									<img
+										key={url}
+										alt="icon"
+										// prettier-ignore
+										src={iconSearch}
+									/>
+								)}
+							</ImageListItem>
+						);
+					})}
+				</ImageList>
+			)}
 		</>
 	);
 }
