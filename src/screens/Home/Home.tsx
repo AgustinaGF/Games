@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, Grid, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 
 import "./Home.css";
@@ -90,6 +90,42 @@ export default function Home() {
 					</Box>
 				</Box>
 			</div>
+			<Grid
+				container
+				justifyContent={"space-between"}
+				alignItems={"center"}
+				sx={{ marginTop: "1em" }}
+			>
+				<Grid
+					item
+					alignItems={"center"}
+					justifyContent="center"
+					sx={{ fontSize: "10px", marginLeft: "5px" }}
+				>
+					<img
+						src="https://icongr.am/fontawesome/copyright.svg?size=12&color=FFFFFF"
+						alt="icon"
+						style={{ marginRight: "5px" }}
+					/>
+					Agustina Gomez Fernandez
+				</Grid>
+				<Grid item justifyContent={"space-around"}>
+					<Link to={"https://github.com/AgustinaGF"}>
+						<img
+							src="https://icongr.am/devicon/github-original.svg?size=30&color=0F0F0F"
+							alt="github"
+							style={{ marginRight: "10px" }}
+						></img>
+					</Link>
+					<Link to={"https://www.linkedin.com/in/agustina-gomez-fernandez/"}>
+						<img
+							src="https://icongr.am/devicon/linkedin-plain.svg?size=30&color=currentColor"
+							alt="linkedink"
+							style={{ marginRight: "5px" }}
+						></img>
+					</Link>
+				</Grid>
+			</Grid>
 		</>
 	);
 }
