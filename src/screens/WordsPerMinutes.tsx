@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Typography, Button, Grid, TextField } from "@mui/material";
+import { Link } from "react-router-dom";
 
 // Words with 6 letters and no special characters and different starting letters
 const WORDS = [
@@ -58,6 +59,23 @@ export default function WordsPerMinutes() {
 				alignItems="center"
 				justifyContent="space-evenly"
 			>
+				<Link to={"/"} style={{ textDecoration: "none" }}>
+					<Button
+						variant="outlined"
+						sx={{
+							height: "50px",
+							minWidth: "50px",
+							borderColor: "#33E9FF",
+							borderWidth: "2px",
+							borderStyle: "solid",
+							background: "#001b38",
+							color: "#33E9FF",
+							marginBottom: "3em",
+						}}
+					>
+						HOME
+					</Button>
+				</Link>
 				{Boolean(time) && (
 					<Typography
 						variant="h3"

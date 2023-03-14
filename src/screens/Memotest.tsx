@@ -6,9 +6,10 @@ import {
 	Collapse,
 	Alert,
 	IconButton,
-	CircularProgress,
+	Button,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
+import { Link } from "react-router-dom";
 
 const IMAGES = [
 	"https://icongr.am/devicon/angularjs-original.svg?size=128&color=currentColor",
@@ -44,7 +45,6 @@ export default function Memotest() {
 	useEffect(() => {
 		if (guessed.length === IMAGES.length) {
 			setOpen(true);
-			// location.reload();
 		}
 	}, [guessed]);
 
@@ -61,7 +61,6 @@ export default function Memotest() {
 								<IconButton
 									aria-label="close"
 									color="inherit"
-									//prettier-ignore
 									onClick={handleClose}
 								>
 									<CloseIcon fontSize="inherit" />
@@ -74,40 +73,53 @@ export default function Memotest() {
 					</Collapse>
 				</Box>
 			) : (
-				<ImageList sx={{ width: "100%", maxHeight: "80%" }} cols={5} gap={20}>
-					{IMAGES.map((image) => {
-						const [, url] = image.split("|");
-						return (
-							<ImageListItem
-								onClick={() =>
-									selected.length < 2 &&
-									setSelected((selected) => selected.concat(image))
-								}
-								key={image}
-								style={{
-									cursor: "pointer",
-									padding: 12,
-									border: "1px solid #33E9FF",
-									borderRadius: 12,
-									background: "#001b38",
-									color: "#33E9FF",
-								}}
-								sx={{ minHeight: 100, minWidth: 100 }}
-							>
-								{selected.includes(image) || guessed.includes(image) ? (
-									<img alt="icon" src={url} />
-								) : (
-									<img
-										key={url}
-										alt="icon"
-										// prettier-ignore
-										src={iconSearch}
-									/>
-								)}
-							</ImageListItem>
-						);
-					})}
-				</ImageList>
+				<>
+					<Link to={"/"} style={{ textDecoration: "none" }}>
+						<Button
+							variant="outlined"
+							sx={{
+								height: "50px",
+								minWidth: "50px",
+								borderColor: "#33E9FF",
+								borderWidth: "2px",
+								borderStyle: "solid",
+								background: "#001b38",
+								color: "#33E9FF",
+								marginBottom: "3em",
+							}}
+						>
+							HOME
+						</Button>
+					</Link>
+					<ImageList cols={5} gap={20}>
+						{IMAGES.map((image) => {
+							const [, url] = image.split("|");
+							return (
+								<ImageListItem
+									onClick={() =>
+										selected.length < 2 &&
+										setSelected((selected) => selected.concat(image))
+									}
+									key={image}
+									style={{
+										cursor: "pointer",
+										padding: 12,
+										border: "1px solid #33E9FF",
+										borderRadius: 12,
+										background: "#001b38",
+										color: "#33E9FF",
+									}}
+								>
+									{selected.includes(image) || guessed.includes(image) ? (
+										<img alt="icon" src={url} />
+									) : (
+										<img key={url} alt="icon" src={iconSearch} />
+									)}
+								</ImageListItem>
+							);
+						})}
+					</ImageList>
+				</>
 			)}
 		</>
 	);

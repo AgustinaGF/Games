@@ -10,6 +10,7 @@ import {
 	Typography,
 } from "@mui/material";
 import "./Pokemon.css";
+import { Link } from "react-router-dom";
 
 const POKEMONS = [
 	"bulbasaur",
@@ -53,7 +54,6 @@ export default function Pokemon() {
 	const [open, setOpen] = useState(false);
 	const [alert, setAlert] = useState("");
 
-	console.log(alert);
 	function handleSubmit(event: React.FormEvent<Form>) {
 		event.preventDefault();
 
@@ -70,98 +70,116 @@ export default function Pokemon() {
 
 	return (
 		<div>
-			<>
-				{open ? (
-					<Box sx={{ width: "100%" }}>
-						<Collapse in={open}>
-							<Alert
-								severity={alert === "won" ? "success" : "error"}
-								action={
-									<IconButton
-										aria-label="close"
-										color="inherit"
-										size="small"
-										onClick={() => {
-											setOpen(false);
-										}}
-									>
-										<CloseIcon fontSize="inherit" />
-									</IconButton>
-								}
-								sx={{ mb: 2 }}
-							>
-								{alert === "won" ? "You Won!!" : "Wrong Answer"}
-							</Alert>
-						</Collapse>
-					</Box>
-				) : null}
-			</>
-			<div className="containerBackgroundPokemon">
-				<Box
-					display="flex"
-					flexDirection="column"
-					alignItems="center"
-					justifyContent="space-evenly"
-				>
-					<Typography sx={{ marginTop: "2em" }} fontSize={20}>
-						{" "}
-						GUESS THE POKEMON
-					</Typography>
-					<img
-						height={512}
-						width={400}
-						className="hiddenPokemon"
-						style={{
-							imageRendering: "pixelated",
-							filter: hasWon ? "" : "brightness(0) invert(0)",
-						}}
-						src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
-							MATCH + 1
-						}.png`}
-					/>
-					{hasWon ? (
-						<Button
-							onClick={() => location.reload()}
-							variant="contained"
-							fullWidth
+			{open ? (
+				<Box sx={{ width: "100%" }}>
+					<Collapse in={open}>
+						<Alert
+							severity={alert === "won" ? "success" : "error"}
+							action={
+								<IconButton
+									aria-label="close"
+									color="inherit"
+									size="small"
+									onClick={() => {
+										setOpen(false);
+									}}
+								>
+									<CloseIcon fontSize="inherit" />
+								</IconButton>
+							}
+							sx={{ mb: 2 }}
 						>
-							Play Again
-						</Button>
-					) : (
-						<form
-							onSubmit={handleSubmit}
-							style={{
-								display: "flex",
-								flexDirection: "row",
-								width: "100%",
-								padding: "2em",
+							{alert === "won" ? "You Won!!" : "Wrong Answer"}
+						</Alert>
+					</Collapse>
+				</Box>
+			) : (
+				<>
+					<Link to={"/"} style={{ textDecoration: "none" }}>
+						<Button
+							variant="outlined"
+							sx={{
+								height: "50px",
+								minWidth: "50px",
+								borderColor: "#33E9FF",
+								borderWidth: "2px",
+								borderStyle: "solid",
+								background: "#001b38",
+								color: "#33E9FF",
+								marginBottom: "3em",
 							}}
 						>
-							<TextField
-								variant="outlined"
-								fullWidth
-								name="pokemon"
-								autoFocus
-								placeholder="Enter the name"
-							/>
-							<Button
-								type="submit"
-								variant="contained"
-								sx={{
-									height: "55px",
-									borderColor: "#33E9FF",
-									borderWidth: "2px",
-									borderStyle: "solid",
-									background: "#001b38",
-									color: "#33E9FF",
+							HOME
+						</Button>
+					</Link>
+					<div className="containerBackgroundPokemon">
+						<Box
+							display="flex"
+							flexDirection="column"
+							alignItems="center"
+							justifyContent="space-evenly"
+						>
+							<Typography sx={{ marginTop: "2em" }} fontSize={20}>
+								{" "}
+								GUESS THE POKEMON
+							</Typography>
+							<img
+								height={512}
+								width={400}
+								className="hiddenPokemon"
+								style={{
+									imageRendering: "pixelated",
+									filter: hasWon ? "" : "brightness(0) invert(0)",
 								}}
-							>
-								Send
-							</Button>
-						</form>
-					)}
-				</Box>
-			</div>
+								src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+									MATCH + 1
+								}.png`}
+							/>
+							{hasWon ? (
+								<Button
+									onClick={() => location.reload()}
+									variant="contained"
+									fullWidth
+								>
+									Play Again
+								</Button>
+							) : (
+								<form
+									onSubmit={handleSubmit}
+									style={{
+										display: "flex",
+										flexDirection: "row",
+										width: "100%",
+										padding: "2em",
+									}}
+								>
+									<TextField
+										variant="outlined"
+										fullWidth
+										name="pokemon"
+										autoFocus
+										placeholder="Enter the name"
+									/>
+									<Button
+										type="submit"
+										variant="contained"
+										sx={{
+											height: "55px",
+											borderColor: "#33E9FF",
+											borderWidth: "2px",
+											borderStyle: "solid",
+											background: "#001b38",
+											color: "#33E9FF",
+										}}
+									>
+										Send
+									</Button>
+								</form>
+							)}
+						</Box>
+					</div>
+				</>
+			)}
 		</div>
 	);
 }
